@@ -235,4 +235,44 @@ let lon=position.coords.longitude;
 
 userLocation="https://maps.google.com/?q="+lat+","+lon;
 
-alert("Location dete
+alert("Location detected ✔");
+
+},
+
+function(){
+
+alert("Please allow location permission.");
+
+}
+
+);
+
+}else{
+
+alert("Geolocation not supported.");
+
+}
+
+}
+
+function sendWhatsApp(){
+
+let message="Hello ECOV Cab Service%0A%0A";
+
+if(userLocation!=""){
+message+="My Pickup Location: "+userLocation+"%0A";
+}
+
+message+="I need a cab.%0A";
+
+window.open(
+"https://wa.me/918907414563?text="+message,
+"_blank"
+);
+
+}
+
+</script>
+
+</body>
+</html>
