@@ -21,15 +21,11 @@ color:#333;
 text-align:center;
 }
 
-/* MAIN CONTAINER */
-
 .container{
 padding:10px 20px 30px 20px;
 max-width:900px;
 margin:auto;
 }
-
-/* LOGO */
 
 .logo{
 width:560px;
@@ -37,8 +33,6 @@ max-width:95%;
 display:block;
 margin:auto;
 }
-
-/* INFO SECTION */
 
 .info-section{
 display:flex;
@@ -59,15 +53,11 @@ font-size:18px;
 margin:6px 0;
 }
 
-/* CAR IMAGE */
-
 .car{
 width:320px;
 border-radius:10px;
 box-shadow:0 6px 12px rgba(0,0,0,0.15);
 }
-
-/* BUTTONS */
 
 .btn{
 display:inline-block;
@@ -96,7 +86,10 @@ background:#25D366;
 color:white;
 }
 
-/* SERVICES */
+.location{
+background:#007bff;
+color:white;
+}
 
 .services{
 background:#f6f6f6;
@@ -111,8 +104,6 @@ font-size:18px;
 line-height:30px;
 }
 
-/* FLOATING BUTTON */
-
 .float{
 position:fixed;
 bottom:20px;
@@ -124,9 +115,8 @@ border-radius:40px;
 font-weight:bold;
 text-decoration:none;
 box-shadow:0 5px 12px rgba(0,0,0,0.3);
+cursor:pointer;
 }
-
-/* FOOTER */
 
 footer{
 margin-top:40px;
@@ -134,8 +124,6 @@ padding:20px;
 background:#f2f2f2;
 font-size:14px;
 }
-
-/* MOBILE */
 
 @media (max-width:700px){
 
@@ -193,8 +181,6 @@ max-width:400px;
 
 </div>
 
-<!-- SERVICES -->
-
 <div class="services">
 
 <h2>🚖 Our Services</h2>
@@ -210,8 +196,6 @@ Local and Long Distance Trips
 
 </div>
 
-<!-- SERVICE AREA -->
-
 <div class="services">
 
 <h2>📍 Service Area – Ernakulam District</h2>
@@ -226,7 +210,7 @@ and all surrounding areas in Ernakulam District
 
 </div>
 
-<a class="float" onclick="sendWhatsApp()">🚖 Book Cab</a>
+<div class="float" onclick="sendWhatsApp()">🚖 Book Cab</div>
 
 <footer>
 
@@ -235,6 +219,7 @@ and all surrounding areas in Ernakulam District
 </footer>
 
 <script>
+
 let userLocation="";
 
 function getLocation(){
@@ -250,43 +235,4 @@ let lon=position.coords.longitude;
 
 userLocation="https://maps.google.com/?q="+lat+","+lon;
 
-document.getElementById("locationText").innerHTML=
-"Location detected ✔";
-
-},
-
-function(){
-
-alert("Please allow location permission.");
-
-}
-
-);
-
-}else{
-
-alert("Geolocation not supported.");
-
-}
-
-function sendWhatsApp(){
-
-let message="Hello ECOV Cab Service%0A%0A";
-
-if(userLocation!=""){
-message+="My Pickup Location: "+userLocation+"%0A";
-}
-
-message+="I need a cab.%0A";
-
-window.open(
-"https://wa.me/918907414563?text="+message,
-"_blank"
-);
-
-}
-
-</script>
-
-</body>
-</html>
+alert("Location dete
