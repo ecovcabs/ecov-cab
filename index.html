@@ -187,6 +187,8 @@ max-width:400px;
 
 <a class="btn call" href="tel:+918907414563">📞 Call Now</a>
 
+<button class="btn location" onclick="getLocation()">📍 Detect My Location</button>
+
 <button class="btn whatsapp" onclick="sendWhatsApp()">💬 Book via WhatsApp</button>
 
 </div>
@@ -233,15 +235,49 @@ and all surrounding areas in Ernakulam District
 </footer>
 
 <script>
+let userLocation="";
+
+function getLocation(){
+
+if(navigator.geolocation){
+
+navigator.geolocation.getCurrentPosition(
+
+function(position){
+
+let lat=position.coords.latitude;
+let lon=position.coords.longitude;
+
+userLocation="https://maps.google.com/?q="+lat+","+lon;
+
+document.getElementById("locationText").innerHTML=
+"Location detected ✔";
+
+},
+
+function(){
+
+alert("Please allow location permission.");
+
+}
+
+);
+
+}else{
+
+alert("Geolocation not supported.");
+
+}
 
 function sendWhatsApp(){
 
 let message="Hello ECOV Cab Service%0A%0A";
-message+="I need a cab booking.%0A";
-message+="Pickup Location:%0A";
-message+="Drop Location:%0A";
-message+="Date:%0A";
-message+="Time:%0A";
+
+if(userLocation!=""){
+message+="My Pickup Location: "+userLocation+"%0A";
+}
+
+message+="I need a cab.%0A";
 
 window.open(
 "https://wa.me/918907414563?text="+message,
