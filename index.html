@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ECOV Cab Service | Ernakulam Taxi Booking</title>
+
+<meta name="description" content="ECOV Cab Service in Ernakulam. Airport pickup and local taxi booking. Book quickly via WhatsApp.">
+
+<meta name="keywords" content="Ernakulam cab service, Kochi taxi, airport taxi Kochi, taxi booking Ernakulam">
+
+<meta name="author" content="ECOV Cab Service">
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#ffffff;
+text-align:center;
+color:#333;
+}
+
+.container{
+padding:30px 20px;
+}
+
+.logo{
+width:380px;
+margin:5px auto;
+display:block;
+}
+
+.details{
+font-size:18px;
+margin:8px 0;
+}
+
+/* info layout */
+
+.info-section{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+margin-top:10px;
+}
+
+.info-text{
+max-width:300px;
+text-align:left;
+}
+
+.car{
+width:320px;
+border-radius:10px;
+}
+
+/* buttons */
+
+.btn{
+display:inline-block;
+margin:10px;
+padding:15px 25px;
+font-size:18px;
+text-decoration:none;
+border-radius:6px;
+font-weight:bold;
+cursor:pointer;
+border:none;
+}
+
+.call{background:#28a745;color:white;}
+.whatsapp{background:#25D366;color:white;}
+.location{background:#007bff;color:white;}
+
+.btn:hover{
+opacity:0.9;
+transform:scale(1.05);
+transition:0.3s;
+}
+
+/* reviews */
+
+.reviews{
+padding:40px 20px;
+}
+
+.review{
+background:#f9f9f9;
+padding:15px;
+margin:10px auto;
+max-width:400px;
+border-radius:8px;
+}
+
+/* map */
+
+.map iframe{
+width:90%;
+max-width:500px;
+height:300px;
+border-radius:10px;
+border:0;
+}
+
+/* floating button */
+
+.float{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:15px 20px;
+border-radius:50px;
+font-size:16px;
+text-decoration:none;
+font-weight:bold;
+box-shadow:0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* footer */
+
+footer{
+margin-top:40px;
+padding:15px;
+background:#f2f2f2;
+font-size:14px;
+}
+
+/* mobile layout */
+
+@media (max-width:700px){
+
+.info-section{
+flex-direction:column;
+text-align:center;
+}
+
+.info-text{
+text-align:center;
+}
+
+.car{
+width:90%;
+max-width:400px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<img src="logo.jpeg" class="logo" alt="ECOV Cab Logo">
+
+<div class="info-section">
+
+<div class="info-text">
+
+<h2>Driver: Shaijan</h2>
+
+<p class="details"><b>Car Model:</b> XUV400 EV</p>
+<p class="details"><b>Cab Registration:</b> KL 42 Y 8204</p>
+<p class="details"><b>Service Area:</b> Ernakulam</p>
+
+</div>
+
+<img class="car" src="car.png" alt="My Cab">
+
+</div>
+
+<br>
+
+<a class="btn call" href="tel:+918907414563">📞 Call Now</a>
+
+<button class="btn location" onclick="getLocation()">📍 Detect My Location</button>
+
+<button class="btn whatsapp" onclick="sendWhatsApp()">💬 Book Cab</button>
+
+<button class="btn location" onclick="shareLocation()">📍 Share Live Location</button>
+
+<p id="locationText"></p>
+
+</div>
+
+<!-- Reviews -->
+
+<div class="reviews">
+
+<h2>⭐ Customer Reviews</h2>
+
+<div class="review">
+⭐⭐⭐⭐⭐ <br>
+Very safe and punctual driver.
+<br><b>– Arun</b>
+</div>
+
+<div class="review">
+⭐⭐⭐⭐⭐ <br>
+Clean car and smooth airport pickup.
+<br><b>– Neha</b>
+</div>
+
+<div class="review">
+⭐⭐⭐⭐⭐ <br>
+Best cab service in Ernakulam.
+<br><b>– Joseph</b>
+</div>
+
+</div>
+
+<!-- Map -->
+
+<div class="map">
+
+<h2>📍 Our Location</h2>
+
+<iframe src="https://maps.google.com/maps?q=Ernakulam&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+
+</div>
+
+<a class="float" onclick="sendWhatsApp()">🚖 Book Cab</a>
+
+<footer>
+© 2026 ECOV Cab Service | Ernakulam Taxi
+</footer>
+
+<script>
+
+let userLocation = "";
+
+/* detect GPS */
+
+function getLocation(){
+
+if(navigator.geolocation){
+
+navigator.geolocation.getCurrentPosition(function(position){
+
+let lat = position.coords.latitude;
+let lon = position.coords.longitude;
+
+userLocation = "https://maps.google.com/?q=" + lat + "," + lon;
+
+document.getElementById("locationText").innerHTML =
+"Location detected ✔";
+
+});
+
+}else{
+
+alert("Geolocation not supported");
+
+}
+
+}
+
+/* send booking message */
+
+function sendWhatsApp(){
+
+let message =
+"Hello ECOV Cab %0A%0A"
++ "Pickup Location: " + userLocation + "%0A"
++ "Drop Location:%0A"
++ "Date:%0A"
++ "Time:%0A"
++ "Passengers:%0A";
+
+window.open(
+"https://wa.me/918907414563?text=" + message,
+"_blank"
+);
+
+}
+
+/* share location */
+
+function shareLocation(){
+
+if(userLocation===""){
+
+alert("Please detect locat
