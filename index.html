@@ -258,12 +258,17 @@ alert("Geolocation not supported.");
 function sendWhatsApp(){
 
 let message="Hello ECOV Cab Service%0A%0A";
+message+="I need a cab.%0A";
 
 if(userLocation!=""){
 message+="My Pickup Location: "+userLocation+"%0A";
+}else{
+message+="My Pickup Location:%0A";
 }
+message+="Drop Location:%0A";
+message+="Date:%0A";
+message+="Time:%0A";
 
-message+="I need a cab.%0A";
 
 window.open(
 "https://wa.me/918907414563?text="+message,
